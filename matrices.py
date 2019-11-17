@@ -67,15 +67,9 @@ def multiply_matrices(matrix1, matrix2):
     if size**0.5 != int(size**0.5):
         return sowry
     resultant = [0 for x in range(size)]
-    resultant[0] = (matrix1[0] * matrix2[0]) + (matrix1[1] * matrix2[3]) + (matrix1[2] * matrix2[6])
-    resultant[1] = (matrix1[0] * matrix2[1]) + (matrix1[1] * matrix2[4]) + (matrix1[2] * matrix2[7])
-    resultant[2] = (matrix1[0] * matrix2[2]) + (matrix1[1] * matrix2[5]) + (matrix1[2] * matrix2[8])
-    resultant[3] = (matrix1[3] * matrix2[0]) + (matrix1[4] * matrix2[3]) + (matrix1[5] * matrix2[6])
-    resultant[4] = (matrix1[3] * matrix2[1]) + (matrix1[4] * matrix2[4]) + (matrix1[5] * matrix2[7])
-    resultant[5] = (matrix1[3] * matrix2[2]) + (matrix1[4] * matrix2[5]) + (matrix1[5] * matrix2[8])
-    resultant[6] = (matrix1[6] * matrix2[0]) + (matrix1[7] * matrix2[3]) + (matrix1[8] * matrix2[6])
-    resultant[7] = (matrix1[6] * matrix2[1]) + (matrix1[7] * matrix2[4]) + (matrix1[8] * matrix2[7])
-    resultant[8] = (matrix1[6] * matrix2[2]) + (matrix1[7] * matrix2[5]) + (matrix1[8] * matrix2[8])
+    L = [(0, 0), (0, 1), (0, 2), (3, 0), (3, 1), (3, 2), (6, 0), (6, 1), (6, 2)]
+    for i in range(size):
+        resultant[i] = (matrix1[L[i][0]] * matrix2[L[i][1]]) + (matrix1[L[i][0]+1] * matrix2[L[i][1]+3]) + (matrix1[L[i][0]+2] * matrix2[L[i][1]+6])
     return resultant
 
 a = [x for x in range(9)]
