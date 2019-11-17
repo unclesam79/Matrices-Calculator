@@ -1,5 +1,6 @@
 #Matrices - Uncle Sam
 
+
 def create_matrix(order):
 
     """Returns a square matrix of a given order"""
@@ -14,6 +15,7 @@ def create_matrix(order):
             matrix[c] = (element)
             c += 1
     return matrix
+
 
 def display_matrix(matrix):
 
@@ -38,6 +40,19 @@ def display_matrix(matrix):
         end += side
         print("|")
 
+
+##def transpose_matrix(matrix):
+##
+##    """Returns the transpose of a given square matrix"""
+##
+##    size = len(matrix)
+##    side = int(size ** 0.5)
+##    if side != size ** 0.5:
+##        print("Please input a square matrix.")
+##        return
+##    transpose = matrix[:]
+
+
 def add_matrices(matrix1, matrix2):
 
     """Adds two square matrices (of the same order) and returns the resultant matrix"""
@@ -49,28 +64,31 @@ def add_matrices(matrix1, matrix2):
         for i in range(len(matrix2)):
             resultant[i] += matrix2[i]
     return resultant
-        
+
+
 def multiply_matrix_scalar(matrix, scalar):
 
     """Returns a matrix multiplied by a scalar"""
 
     return [x * scalar for x in matrix]
 
+
 def multiply_matrices(matrix1, matrix2):
 
     """Returns the product of the multiplication of two square matrices (Returns matrix1 X matrix2)"""
 
     sowry = "Sorry, matrix multiplication is currently only supported for square matrices of the same order"
-    if len(matrix1) != len(matrix2):
+    if len(matrix1) != len(matrix2):  # Not of same order
         return sowry
     size = len(matrix1)
-    if size**0.5 != int(size**0.5):
+    if size**0.5 != int(size**0.5):  # Not square matrices
         return sowry
     resultant = [0 for x in range(size)]
     L = [(0, 0), (0, 1), (0, 2), (3, 0), (3, 1), (3, 2), (6, 0), (6, 1), (6, 2)]
     for i in range(size):
         resultant[i] = (matrix1[L[i][0]] * matrix2[L[i][1]]) + (matrix1[L[i][0]+1] * matrix2[L[i][1]+3]) + (matrix1[L[i][0]+2] * matrix2[L[i][1]+6])
     return resultant
+
 
 a = [x for x in range(9)]
 b = [-x for x in range(9)]
